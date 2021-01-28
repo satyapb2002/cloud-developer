@@ -8,7 +8,7 @@ export class S3Helper{
         private readonly  s3:AWS.S3 = new XAWS.S3({
             signatureVersion: 'v4',
             region: process.env.region,
-            params: {Bucket: process.env.IMAGES_BUCKET}
+            params: {Bucket: process.env.ATTACHMENTS_BUCKET}
           }),
           private readonly  signedUrlExpireSeconds = 60 * 5
     ){

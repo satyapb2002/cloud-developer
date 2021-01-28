@@ -6,6 +6,9 @@ import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { getUserId} from '../../helpers/userHelper'
 import { accessTodos } from '../../dataLayer/todosDAO'
 import { responseHelper } from '../../helpers/responseHelper'
+import { createLogger } from '../../utils/logger'
+
+const logger = createLogger('todos')
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const newTodo: CreateTodoRequest = JSON.parse(event.body)

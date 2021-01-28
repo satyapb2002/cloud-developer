@@ -31,6 +31,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   }
 
    logger.info(`Updating User: ${userId} OldGroup: ${todoId} NewGroup: ${updatedTodo}`)
-   await new todosDAO().updateTodo(updatedTodo,todoId)
+   await new accessTodos().updateTodo(updatedTodo,todoId)
    return respHelper.emptySuccessResponse(204)
 }
