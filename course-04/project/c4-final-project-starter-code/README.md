@@ -21,7 +21,6 @@ npm run start
 ```
 
 ## Deplyment details
-```
 Postman Collection
 ```
 Udacity C4 Project.postman_collection.json
