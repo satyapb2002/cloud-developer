@@ -17,6 +17,20 @@ custom:
     packagerOptions:
       scripts:
         - rm -rf node_modules/aws-sdk
+
+  documentation:
+    api:
+      info:
+        version: v1.0.0
+        title: ToDos API
+        description: serverless api for ToDo application
+    models:
+      - name: CreateTodo
+        contentType: application/json
+        schema: ${file(validators/create-todo-request.json)}
+      - name: UpdateTodo
+        contentType: application/json
+        schema: ${file(validators/update-todo-request.json)}
  
 provider:
   tracing:
