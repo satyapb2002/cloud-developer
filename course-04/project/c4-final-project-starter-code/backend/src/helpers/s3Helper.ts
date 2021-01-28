@@ -4,8 +4,8 @@ import * as AWSXRay from 'aws-xray-sdk'
 export class S3Helper{
 
     constructor(
-        private readonly aws = AWSXRay.captureAWS(AWS),
-        private readonly  s3:AWS.S3 = new aws.S3({
+        private readonly XAWS = AWSXRay.captureAWS(AWS),
+        private readonly  s3:AWS.S3 = new XAWS.S3({
             signatureVersion: 'v4',
             region: process.env.region,
             params: {Bucket: process.env.IMAGES_BUCKET}

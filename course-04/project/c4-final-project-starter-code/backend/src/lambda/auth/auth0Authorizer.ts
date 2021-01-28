@@ -49,7 +49,6 @@ export const handler = async (
       }
     }
   }
-}
 
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
   const token = getToken(authHeader)

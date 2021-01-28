@@ -16,7 +16,7 @@ function getToken(header: string): string {
     if (!header.toLowerCase().startsWith('bearer '))
       throw new Error('Invalid authentication header')
   
-    const split = authHeader.split(' ')
+    const split = header.split(' ')
     const token = split[1]
   
     return token

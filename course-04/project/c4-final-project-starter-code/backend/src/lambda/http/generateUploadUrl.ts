@@ -8,7 +8,7 @@ import { getUserId} from '../../helpers/userHelper'
 import { createLogger } from '../../utils/logger'
 
 const todosDAO = new accessTodos()
-const responseHelper = new responseHelper()
+const respHelper = new responseHelper()
 const logger = createLogger('todos')
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
@@ -19,15 +19,15 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const item = await todosDAO.getTodo(todoId)
   if(item.Count == 0){
       logger.error(`Todo id does not exist for user. User: ${userId} Todoid : ${todoId}`)
-      return responseHelper.errorResponse(400,'TODO does not exist.')
+      return respHelper.errorResponse(400,'TODO does not exist.')
   }
   
   if(item.Items[0].userId !== userId){
       logger.error(`Not authorized to delete. User: ${userId} Todo: ${todoId}`)
-      return responseHelper.errorResponse(400,'User not authorized to delete.')
+      return respHelper.errorResponse(400,'User not authorized to delete.')
   }
   
   const url = new S3Helper().getSignedUrl(todoId)
-  return responseHelper.successResponse(200,"uploadUrl",url)
+  return respHelper.successResponse(200,"uploadUrl",url)
 
 }

@@ -1,16 +1,16 @@
-import { TodoItem } from "../models/todoItem";
+import { TodoItem } from "../models/TodoItem";
 const uuid = require('uuid/v4')
 import * as AWS from 'aws-sdk'
 import * as AWSXRay from 'aws-xray-sdk'
-import { UpdateTodoRequest } from "../requests/updateTodoRequest";
-import { CreateTodoRequest } from "../requests/createTodoRequest";
+import { UpdateTodoRequest } from "../requests/UpdateTodoRequest";
+import { CreateTodoRequest } from "../requests/CreateTodoRequest";
 
 
 
 export class accessTodos{
     constructor(
-        private readonly xaws = AWSXRay.captureAWS(AWS),
-        private readonly dbClient: AWS.DynamoDB.DocumentClient = new xaws.DynamoDB.DocumentClient(),
+        private readonly XAWS = AWSXRay.captureAWS(AWS),
+        private readonly dbClient: AWS.DynamoDB.DocumentClient = new XAWS.DynamoDB.DocumentClient(),
         private readonly todosTable = process.env.TODO_TABLE,
         private readonly userIdIndex = process.env.USERID_INDEX
     )

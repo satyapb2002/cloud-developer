@@ -8,8 +8,9 @@ import { createLogger } from '../../utils/logger'
 import { S3Helper } from '../../helpers/s3Helper'
 
 const s3Helper = new S3Helper()
-const responseHelper= new responseHelper()
+const respHelper= new responseHelper()
 const logger = createLogger('todos')
+const todosDAO = new accessTodos()
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
@@ -22,6 +23,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         record.attachmentUrl = await s3Helper.getAttachmentUrl(record.todoId)
     }
 
-    return responseHelper.successResponse(200,'items',result)
+    return respHelper.successResponse(200,'items',result)
 
 }
