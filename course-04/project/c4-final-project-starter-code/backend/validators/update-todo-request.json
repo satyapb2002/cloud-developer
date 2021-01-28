@@ -4,7 +4,8 @@
     "type":"object",
     "properties": {
         "name":{
-            "type":"string"
+            "type":"string",
+            "not": {"type":  null}
         },
         "dueDate":{
             "type":"string"
